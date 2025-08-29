@@ -108,7 +108,7 @@ CREATE TABLE Material
 	  GO
 
 INSERT Material ( titulo, link, arquivo, data_publicacao, autor, status_material)
-VALUES ( 'Alimentação do Bebe', 'Link', 'Introdução alimentar', GETDATE(), 'Tatiana Zanin', 'ATIVO' )
+VALUES ( 'Alimentação do Bebe', Null, Null, GETDATE(), 'Tatiana Zanin', 'ATIVO' )
 
 GO
 SELECT * FROM Material
@@ -134,12 +134,12 @@ CREATE TABLE Favorito
 	  GO
 
 INSERT Favorito (usuario_id, material_id, data_favoritada)
-VALUES (1, GETDATE() )
+VALUES (1, 1, GETDATE() )
 
 GO
 SELECT * FROM Favorito
  
--- DROP TABLE Favorito
+ DROP TABLE Favorito
 -- FAVORITO
 
 
@@ -162,12 +162,12 @@ CREATE TABLE Gestante
 	  GO
 
 INSERT Gestante (usuario_id, data_registro, data_nascimento, observacoes, tipo_sanguineo)
-VALUES ( 1, GETDATE(), '2ª',  75.8, 11.5, 'nenhum sintoma', 'nenhuma')
+VALUES ( 1, GETDATE(), GETDATE(), 'Muitos Enjoos.', 'A+')
 
 GO
 SELECT * FROM Gestante
  
--- DROP TABLE Gestante
+DROP TABLE Gestante
 -- GESTANTE
 
 
@@ -221,12 +221,12 @@ CREATE TABLE GestacaoHistorico
 	 GO
 
 INSERT GestacaoHistorico(gestacao_id, data_registro, observacoes, peso_materno, pressao_arterial, semana_gestacional)
-VALUES (3, GETDATE(),  'Muitos enjoos', '75,2 QUILOS', '90/60 mmHg', 'Semana 36')
+VALUES (1, GETDATE(),  'Muitos enjoos', 75.2, '90/60 mmHg', 'Semana 36')
 
 GO
 SELECT * FROM GestacaoHistorico 
 
--- DROP TABLE GestacaoHistorico
+DROP TABLE GestacaoHistorico
 -- GESTACAOHISTORICO
 
 
