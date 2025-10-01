@@ -31,7 +31,7 @@ VALUES ( 'Lorena souza',  'lorena@gmail.com', 'Gestante', 'lorenasouza1', GETDAT
 GO
 SELECT * FROM Usuario
  
--- DROP TABLE Usuario
+ DROP TABLE Usuario
 -- USUARIO
 
 
@@ -53,7 +53,7 @@ VALUES ('consulta' )
 GO
 SELECT * FROM Evento
 
--- DROP TABLE Evento
+ DROP TABLE Evento
 -- EVENTO
 
 
@@ -113,7 +113,7 @@ VALUES ( 'Alimentação do Bebe', Null, Null, GETDATE(), 'Tatiana Zanin', 'ATIVO' 
 GO
 SELECT * FROM Material
  
- DROP TABLE Material
+-- DROP TABLE Material
 -- MATERIAL
 
 
@@ -139,7 +139,7 @@ VALUES (1, 1, GETDATE() )
 GO
 SELECT * FROM Favorito
  
- DROP TABLE Favorito
+-- DROP TABLE Favorito
 -- FAVORITO
 
 
@@ -167,7 +167,7 @@ VALUES ( 1, GETDATE(), GETDATE(), 'Muitos Enjoos.', 'A+')
 GO
 SELECT * FROM Gestante
  
-DROP TABLE Gestante
+-- DROP TABLE Gestante
 -- GESTANTE
 
 
@@ -211,7 +211,7 @@ CREATE TABLE GestacaoHistorico
 	  gestacao_id INT,
 	  data_registro  DATETIME NOT NULL,
 	  observacoes VARCHAR(200) NOT NULL,
-	  peso_materno DECIMAL(5,2) NOT NULL,
+	  peso_materno DECIMAL(6) NOT NULL,
 	  pressao_arterial VARCHAR(20) NOT NULL,
 	  semana_gestacional     VARCHAR(100) NOT NULL,
 	  
