@@ -19,13 +19,13 @@ CREATE TABLE Usuario
 	  senha				VARCHAR(255)	NOT NULL,
 	  nivel_acesso		VARCHAR(20)		NOT NULL,
 	  data_cadastro		DATETIME		NOT NULL,
-	  statusUsuario		VARCHAR(10)		NOT NULL,
+	  status_usuario		VARCHAR(10)		NOT NULL,
 	  
 	  PRIMARY KEY (id)
 )
 	  GO
 
-INSERT Usuario (nome, email, senha, nivel_acesso, data_cadastro, statusUsuario)
+INSERT Usuario (nome, email, senha, nivel_acesso, data_cadastro, status_usuario)
 VALUES ( 'Lorena souza',  'lorena@gmail.com', 'Gestante', 'lorenasouza1', GETDATE(), 'ATIVO')
 
 GO
@@ -84,7 +84,7 @@ VALUES ( 1, 1, 'Análises ao sangue e urina', 'Levar coleta de urina e exame de s
 GO
 SELECT * FROM Agenda
  
--- DROP TABLE Agenda
+DROP TABLE Agenda
 -- AGENDA
 
 
@@ -113,7 +113,7 @@ VALUES ( 'Alimentação do Bebe', Null, Null, GETDATE(), 'Tatiana Zanin', 'ATIVO' 
 GO
 SELECT * FROM Material
  
--- DROP TABLE Material
+DROP TABLE Material
 -- MATERIAL
 
 
@@ -138,8 +138,8 @@ VALUES (1, 1, GETDATE() )
 
 GO
 SELECT * FROM Favorito
- 
--- DROP TABLE Favorito
+
+DROP TABLE Favorito
 -- FAVORITO
 
 
@@ -167,7 +167,7 @@ VALUES ( 1, GETDATE(), GETDATE(), 'Muitos Enjoos.', 'A+')
 GO
 SELECT * FROM Gestante
  
--- DROP TABLE Gestante
+DROP TABLE Gestante
 -- GESTANTE
 
 
@@ -198,7 +198,7 @@ VALUES (1, GETDATE(),  GETDATE(), GETDATE(), 'Sem risco', 'Muitos enjoos', 'Ocor
 GO
 SELECT * FROM Gestacao
  
--- DROP TABLE Gestacao
+DROP TABLE Gestacao
 -- GESTACAO
 
 
