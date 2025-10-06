@@ -7,9 +7,6 @@ GO
 
 USE bd_babybuddy
 
-
-
-
 -- USUARIO
 CREATE TABLE Usuario
 (
@@ -30,11 +27,9 @@ VALUES ( 'Lorena souza',  'lorena@gmail.com', 'Gestante', 'lorenasouza1', GETDAT
 
 GO
 SELECT * FROM Usuario
- 
- DROP TABLE Usuario
+
+-- drop table Usuario
 -- USUARIO
-
-
 
 
 -- EVENTO
@@ -53,10 +48,8 @@ VALUES ('consulta' )
 GO
 SELECT * FROM Evento
 
- DROP TABLE Evento
+-- drop table Evento
 -- EVENTO
-
-
 
 
 -- AGENDA
@@ -83,15 +76,12 @@ VALUES ( 1, 1, 'Análises ao sangue e urina', 'Levar coleta de urina e exame de s
 
 GO
 SELECT * FROM Agenda
- 
-DROP TABLE Agenda
+
+-- drop table Agenda
 -- AGENDA
 
 
-
-
 -- MATERIAL
-
 CREATE TABLE Material
 (
       id      INT IDENTITY,
@@ -112,11 +102,9 @@ VALUES ( 'Alimentação do Bebe', Null, Null, GETDATE(), 'Tatiana Zanin', 'ATIVO' 
 
 GO
 SELECT * FROM Material
- 
-DROP TABLE Material
+
+-- drop table Material
 -- MATERIAL
-
-
 
 
 -- FAVORITO
@@ -139,10 +127,8 @@ VALUES (1, 1, GETDATE() )
 GO
 SELECT * FROM Favorito
 
-DROP TABLE Favorito
+-- drop table Favorito
 -- FAVORITO
-
-
 
 
 -- GESTANTE
@@ -167,14 +153,11 @@ VALUES ( 1, GETDATE(), GETDATE(), 'Muitos Enjoos.', 'A+')
 GO
 SELECT * FROM Gestante
  
-DROP TABLE Gestante
+-- drop table Gestante
 -- GESTANTE
 
 
-
-
 -- GESTACAO
-
 CREATE TABLE Gestacao
 (
       id        INT IDENTITY,
@@ -198,10 +181,8 @@ VALUES (1, GETDATE(),  GETDATE(), GETDATE(), 'Sem risco', 'Muitos enjoos', 'Ocor
 GO
 SELECT * FROM Gestacao
  
-DROP TABLE Gestacao
+-- drop table Gestacao
 -- GESTACAO
-
-
 
 
 -- GESTACAOHISTORICO
@@ -226,9 +207,18 @@ VALUES (1, GETDATE(),  'Muitos enjoos', 75.2, '90/60 mmHg', 'Semana 36')
 GO
 SELECT * FROM GestacaoHistorico 
 
-DROP TABLE GestacaoHistorico
+-- drop table GestacaoHistorico
 -- GESTACAOHISTORICO
 
+
+DROP TABLE Usuario
+DROP TABLE Evento
+DROP TABLE Agenda
+DROP TABLE Material
+DROP TABLE Favorito
+DROP TABLE Gestante
+DROP TABLE Gestacao
+DROP TABLE GestacaoHistorico
 
 
 SELECT * FROM Usuario
