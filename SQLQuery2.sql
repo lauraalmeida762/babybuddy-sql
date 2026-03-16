@@ -19,20 +19,20 @@ CREATE TABLE Usuario
 	  senha				VARCHAR(255)	NOT NULL,
 	  nivel_acesso		VARCHAR(20)		NOT NULL,
 	  data_cadastro		DATETIME		NOT NULL,
-	  statusUsuario		VARCHAR(10)		NOT NULL,
+	  status_usuario		VARCHAR(10)		NOT NULL,
 	  
 	  PRIMARY KEY (id)
 )
 	  GO
 
-INSERT Usuario (nome, email, senha, nivel_acesso, data_cadastro, statusUsuario)
+INSERT Usuario (nome, email, senha, nivel_acesso, data_cadastro, status_usuario)
 VALUES ( 'Lorena souza',  'lorena@gmail.com', 'Gestante', 'lorenasouza1', GETDATE(), 'ATIVO')
 
 GO
 SELECT * FROM Usuario
  
--- DROP TABLE Usuario
--- USUARIO
+ DROP TABLE Usuario
+
 
 
 
@@ -53,8 +53,8 @@ VALUES ('consulta' )
 GO
 SELECT * FROM Evento
 
--- DROP TABLE Evento
--- EVENTO
+DROP TABLE Evento
+
 
 
 
@@ -84,8 +84,8 @@ VALUES ( 1, 1, 'Análises ao sangue e urina', 'Levar coleta de urina e exame de s
 GO
 SELECT * FROM Agenda
  
--- DROP TABLE Agenda
--- AGENDA
+ DROP TABLE Agenda
+
 
 
 
@@ -97,7 +97,7 @@ CREATE TABLE Material
       id      INT IDENTITY,
 	  titulo VARCHAR(150) NOT NULL,
 	  link   VARCHAR(200) NULL,
-	  arquivo VARBINARY(MAX) NULL,
+	  arquivo VARCHAR(MAX) NULL,
 	  data_publicacao   DATETIME NOT NULL,
 	  autor   VARCHAR(200) NOT NULL,
 	  status_material VARCHAR(50) NOT NULL,
@@ -114,18 +114,16 @@ GO
 SELECT * FROM Material
  
  DROP TABLE Material
--- MATERIAL
-
 
 
 
 -- FAVORITO
-CREATE TABLE Favorito
+CREATE TABLE Favorit
 (
       id      INT IDENTITY,
 	  usuario_id INT,
 	  material_id INT,
-	  data_favoritada   SMALLDATETIME,
+	  data_favoritada   DATETIME     NOT NULL,
   
 	  PRIMARY KEY (id),
 	  FOREIGN KEY(material_id) REFERENCES Material(id),
@@ -133,14 +131,13 @@ CREATE TABLE Favorito
 )
 	  GO
 
-INSERT Favorito (usuario_id, material_id, data_favoritada)
-VALUES (1, GETDATE() )
+INSERT Favorit (usuario_id, material_id, data_favoritada)
+VALUES (1, 1, GETDATE())
 
 GO
-SELECT * FROM Favorito
+SELECT * FROM Favorit
  
--- DROP TABLE Favorito
--- FAVORITO
+ DROP TABLE Favorit
 
 
 
@@ -162,14 +159,12 @@ CREATE TABLE Gestante
 	  GO
 
 INSERT Gestante (usuario_id, data_registro, data_nascimento, observacoes, tipo_sanguineo)
-VALUES ( 1, GETDATE(), '2ª',  75.8, 11.5, 'nenhum sintoma', 'nenhuma')
+VALUES ( 1, GETDATE(), GETDATE(), 'nenhum sintoma', 'o-')
 
 GO
 SELECT * FROM Gestante
  
--- DROP TABLE Gestante
--- GESTANTE
-
+DROP TABLE Gestante
 
 
 
@@ -198,9 +193,7 @@ VALUES (1, GETDATE(),  GETDATE(), GETDATE(), 'Sem risco', 'Muitos enjoos', 'Ocor
 GO
 SELECT * FROM Gestacao
  
--- DROP TABLE Gestacao
--- GESTACAO
-
+ DROP TABLE Gestacao
 
 
 
@@ -213,21 +206,50 @@ CREATE TABLE GestacaoHistorico
 	  observacoes VARCHAR(200) NOT NULL,
 	  peso_materno DECIMAL(5,2) NOT NULL,
 	  pressao_arterial VARCHAR(20) NOT NULL,
-	  semana_gestacional     VARCHAR(100) NOT NULL,
-	  
+	  semana_gestacional     INT  NOT NULL,
+
 	  PRIMARY KEY (id),
-	  FOREIGN KEY (gestacao_id) references Gestacao (id)
+	  CONSTRAINT fk_gestacao_historico FOREIGN KEY (gestacao_id) references Gestacao (id)
 )
 	 GO
 
-INSERT GestacaoHistorico(gestacao_id, data_registro, observacoes, peso_materno, pressao_arterial, semana_gestacional)
-VALUES (3, GETDATE(),  'Muitos enjoos', '75,2 QUILOS', '90/60 mmHg', 'Semana 36')
+INSERT into GestacaoHistorico (gestacao_id, data_registro, observacoes, peso_materno, pressao_arterial, semana_gestacional)
+VALUES (1, GETDATE(),  'Muitos enjoos', 75.2, '90/60 mmHg', 36)
 
 GO
-SELECT * FROM GestacaoHistorico 
+SELECT * FROM GestacaoHistorico
 
--- DROP TABLE GestacaoHistorico
--- GESTACAOHISTORICO
+ DROP TABLE GestacaoHistorico
+
+
+
+
+ --SUPORTE
+ CREATE TABLE suporte 
+ (
+    suporte_id INT IDENTITY PRIMARY KEY,
+    usuario_id INT, 
+    assunto VARCHAR(100) NOT NULL,
+    mensagem TEXT NOT NULL,
+    resposta TEXT NOT NULL,
+    situacao_atual VARCHAR(20) NOT NULL,
+    data_envio DATETIME NOT NULL,
+    data_resposta DATETIME NOT NULL,
+	
+	 constraint fk_suporte_usuario FOREIGN KEY (suporte_id) references usuario (id)
+
+)
+
+   GO
+
+   INSERT suporte (usuario_id, assunto, mensagem, resposta, situacao_atual,  data_envio, data_resposta)
+   VALUES (1, 'erro no aplicativo', 'o aplicativo esta fechando quando tento registrar sintomas', 'estamos analisando o problema', 'respondido', GETDATE(), GETDATE())
+
+   GO
+   SELECT * FROM suporte
+
+   DROP TABLE suporte
+
 
 
 
@@ -235,8 +257,8 @@ SELECT * FROM Usuario
 SELECT * FROM Evento
 SELECT * FROM Agenda
 SELECT * FROM Material
-SELECT * FROM Favorito
+SELECT * FROM Favorit
 SELECT * FROM Gestante
 SELECT * FROM Gestacao
 SELECT * FROM GestacaoHistorico
-
+SELECT * FROM suporte
